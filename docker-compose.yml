@@ -1,13 +1,17 @@
 version: '2.4'
 
+volumes:
+  backend:
+  frontend:
+
 x-web-defaults: &web-defaults
   restart: unless-stopped
   build:
     context: backend
     dockerfile: 'Dockerfile'
   volumes:
-    - /backend:/app
-    - /frontend:/frontend
+    - backend:/app
+    - frontend:/frontend
   depends_on:
     - redis
   environment:
