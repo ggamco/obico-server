@@ -6,8 +6,8 @@ x-web-defaults: &web-defaults
     context: backend
     dockerfile: 'Dockerfile'
   volumes:
-    - backend:/app
-    - frontend:/frontend
+    - /backend:/app
+    - /frontend:/frontend
   depends_on:
     - redis
   environment:
@@ -38,10 +38,6 @@ x-web-defaults: &web-defaults
     SLACK_CLIENT_ID: '${SLACK_CLIENT_ID-}'
     SLACK_CLIENT_SECRET: '${SLACK_CLIENT_SECRET-}'
     VERSION:
-    
-volumes:
-  backend:
-  frontend:
   
 services:
   ml_api:
